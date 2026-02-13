@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Will You Be My Valentine? 💖</title>
+    <meta name="description" content="A special Valentine's Day surprise for my love">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💖</text></svg>">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&family=Great+Vibes&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- ==================== INTRO SCREEN ==================== -->
+    <section id="intro-screen" class="screen active">
+        <!-- Floating background hearts -->
+        <div class="bg-hearts" id="bg-hearts"></div>
+
+        <div class="intro-content">
+            <div class="heart-container" id="main-heart" role="button" tabindex="0" aria-label="Click to continue">
+                <svg class="heart-svg" viewBox="0 0 512 512">
+                    <defs>
+                        <linearGradient id="heartGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#ff6b9d;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#e91e63;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#c2185b;stop-opacity:1" />
+                        </linearGradient>
+                        <filter id="heartGlow">
+                            <feGaussianBlur stdDeviation="8" result="blur" />
+                            <feMerge>
+                                <feMergeNode in="blur" />
+                                <feMergeNode in="SourceGraphic" />
+                            </feMerge>
+                        </filter>
+                    </defs>
+                    <path fill="url(#heartGrad)" filter="url(#heartGlow)"
+                        d="M256 448l-30.2-27.5C94.4 302.8 32 248.6 32 179.9 32 124.3 76.3 80 131.9 80c31.4 0 61.5 14.6 81.1 37.7L256 169.6l43-51.9C318.6 94.6 348.7 80 380.1 80 435.7 80 480 124.3 480 179.9c0 68.7-62.4 122.9-193.8 240.6L256 448z" />
+                </svg>
+                <div class="heart-text">
+                    <span class="heart-text-line">Will you be</span>
+                    <span class="heart-text-line">my</span>
+                    <span class="heart-text-line valentine-word">Valentine?</span>
+                </div>
+                <div class="heart-pulse-ring"></div>
+                <div class="heart-pulse-ring ring-2"></div>
+            </div>
+            <p class="tap-hint">💕 Tap the heart 💕</p>
+        </div>
+    </section>
+
+    <!-- ==================== HEART EXPLOSION TRANSITION ==================== -->
+    <div id="heart-explosion" class="heart-explosion"></div>
+
+    <!-- ==================== SLIDESHOW SCREEN ==================== -->
+    <section id="slideshow-screen" class="screen">
+        <!-- Particle background -->
+        <canvas id="particle-canvas"></canvas>
+
+        <div class="slideshow-content">
+            <h1 class="main-title">
+                <span class="title-line">Happy Valentine's Day</span>
+                <span class="title-line accent">My Love</span>
+                <div class="title-hearts-decor">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="#ff4081">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                </div>
+            </h1>
+
+            <div class="rope-container">
+                <div class="rope"></div>
+                <!-- Photos will be injected here -->
+                <div id="rope-photos-area" class="rope-photos-area"></div>
+            </div>
+
+            <p class="love-quote" id="love-quote"></p>
+        </div>
+
+        <!-- Floating corner hearts (SVG) -->
+        <div class="corner-decor top-left">
+            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.3)">
+                <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+        </div>
+        <div class="corner-decor top-right">
+            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.3)">
+                <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+        </div>
+        <div class="corner-decor bottom-left">
+            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.3)">
+                <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+        </div>
+        <div class="corner-decor bottom-right">
+            <svg viewBox="0 0 24 24" fill="rgba(255,255,255,0.3)">
+                <path
+                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
